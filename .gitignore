@@ -13,3 +13,5 @@ build/
 *.swp
 *.swo
 Thumbs.db
+
+prd.md # 开发文档

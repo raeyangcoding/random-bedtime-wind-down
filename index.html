@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>随机睡前放送</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="app">
+    <!-- 主页面 -->
+    <main id="main-view" class="view">
+      <header class="header">
+        <h1>随机睡前放送</h1>
+        <p class="slogan">抽一个，今晚就它了</p>
+      </header>
+
+      <section class="pick-section">
+        <div id="current-pick" class="current-pick card">
+          <div id="pick-cover-wrap" class="pick-cover-wrap">
+            <img id="pick-cover" class="pick-cover" src="" alt="" />
+            <span id="pick-placeholder" class="pick-placeholder">点击下方按钮抽一个</span>
+          </div>
+          <h2 id="pick-title" class="pick-title"></h2>
+          <a id="pick-link" class="pick-link" href="#" target="_blank" rel="noopener" style="display: none;">去观看</a>
+          <button type="button" id="btn-pick" class="btn btn-primary">再抽一次</button>
+        </div>
+      </section>
+
+      <section class="list-section">
+        <button type="button" id="btn-toggle-list" class="btn-toggle-list" aria-expanded="false" aria-label="展开/收起列表">
+          <svg class="icon-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          <span>我的列表</span>
+        </button>
+        <div id="list-panel" class="list-panel" hidden>
+          <div class="list-actions">
+            <label class="checkbox-label">
+              <input type="checkbox" id="select-all" />
+              <span>全选</span>
+            </label>
+            <button type="button" id="btn-delete-selected" class="btn btn-ghost">批量删除</button>
+            <button type="button" id="btn-add-video" class="btn btn-secondary">添加视频</button>
+          </div>
+          <div id="add-video-form" class="add-form" hidden>
+            <input type="text" id="video-url" class="input-url" placeholder="粘贴 B 站或 YouTube 链接" />
+            <div class="add-form-actions">
+              <button type="button" id="btn-add-confirm" class="btn btn-primary">添加</button>
+              <button type="button" id="btn-add-cancel" class="btn btn-ghost">取消</button>
+            </div>
+          </div>
+          <ul id="video-list" class="video-list"></ul>
+        </div>
+      </section>
+
+      <section class="share-section">
+        <button type="button" id="btn-share" class="btn btn-secondary">生成分享链接</button>
+        <div id="share-result" class="share-result" hidden>
+          <p class="share-hint">打开即展示当前列表</p>
+          <div class="share-url-wrap">
+            <input type="text" id="share-url" class="input-url" readonly />
+            <button type="button" id="btn-copy" class="btn btn-primary">复制</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>本页面仅供个人放松使用。视频版权归 Bilibili、YouTube 及原作者所有。用户添加与分享的列表由用户自行负责，与本站无关。</p>
+      </footer>
+    </main>
+
+    <!-- 分享展示页 -->
+    <main id="share-view" class="view" hidden>
+      <header class="header">
+        <h1>分享的睡前放送</h1>
+      </header>
+      <section class="share-list-section">
+        <ul id="share-video-list" class="video-list video-list--share"></ul>
+        <p id="share-empty" class="empty-hint" hidden>暂无分享列表或链接已失效。</p>
+      </section>
+      <footer class="footer">
+        <p>视频版权归原作者与平台所有。本页仅展示分享列表，不存储数据。</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
